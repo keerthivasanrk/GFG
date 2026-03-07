@@ -3,17 +3,12 @@ class Solution:
 		arr.sort()
 		l=0
 		r=len(arr)-1
-		if len(arr)<2:
-		    return False
 		
 		while l<r:
-		    sum = arr[l] + arr[r]
-		    if sum == target:
-		        return True
-		    elif sum<target:
+		    s = arr[l]+arr[r]
+		    if s<target:
 		        l+=1
-		    else:
+		    elif s>target:
 		        r-=1
-		        
-	    else:
-	        return False
+		    else:
+		        return True
