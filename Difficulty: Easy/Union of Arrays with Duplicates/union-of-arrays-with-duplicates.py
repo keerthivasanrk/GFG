@@ -3,34 +3,29 @@ class Solution:
         # code here
         a.sort()
         b.sort()
-        
-        i =0 
-        j =0
-        
-        ans =[]
-        while i<len(a) and j<len(b):
-            if a[i]<b[j]:
-                if not ans or ans[-1]!= a[i]:
-                    ans.append(a[i])
-                i+=1
-            elif a[i]>b[j]:
-                if not ans or ans[-1]!= b[j]:
-                    ans.append(b[j])
-                j+=1
+        c=0
+        d=0
+        ans=[]
+        while c<len(a) and d<len(b):
+            if a[c]<b[d]:
+                if not ans or ans[-1]!=a[c]:
+                    ans.append(a[c])
+                c+=1
+            elif a[c]>b[d]:
+                if not ans or ans[-1]!=b[d]:
+                    ans.append(b[d])
+                d+=1
             else:
-                if not ans or ans[-1]!= a[i]:
-                    ans.append(a[i])
-                i+=1
-                j+=1
-        
-        while i<len(a):
-            
-            if not ans or ans[-1]!= a[i]:
-                ans.append(a[i])
-            i+=1
-        while j<len(b):
-            
-            if not ans or ans[-1]!= b[j]:
-                ans.append(b[j])
-            j+=1
+                if not ans or ans[-1]!=a[c]:
+                    ans.append(b[d])
+                c+=1
+                d+=1
+        while c<len(a):
+            if ans[-1]!=a[c]:
+                ans.append(a[c])
+            c+=1
+        while d<len(b):
+            if ans[-1]!=b[d]:
+                ans.append(b[d])
+            d+=1
         return ans
