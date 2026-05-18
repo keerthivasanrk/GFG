@@ -1,14 +1,9 @@
 class Solution:
-    def pattern(self, n):
-        # code here
-        
-        res = []
-        
-        def com(cur):
-            res.append(cur)
-            if cur<=0:
-                return
-            com(cur-5)
-            res.append(cur)
-        com(n)
+    def pattern(self, n,res=None):
+        if res is None:
+            res = []
+        res.append(n)
+        if n>0:
+            self.pattern(n-5,res)
+            res.append(n)
         return res
