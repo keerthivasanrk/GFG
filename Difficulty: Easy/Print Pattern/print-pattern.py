@@ -4,6 +4,8 @@ class Solution:
             res = []
         res.append(n)
         if n>0:
+            
             self.pattern(n-5,res)
             res.append(n)
         return res
+        
