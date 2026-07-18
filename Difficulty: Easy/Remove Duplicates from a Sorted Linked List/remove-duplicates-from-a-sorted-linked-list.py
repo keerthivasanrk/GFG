@@ -9,16 +9,12 @@
 '''
 def removeDuplicates(head):
     #code here
-    if not head:
-        return
-    
     curr = head
-    
     while curr and curr.next:
-        
-        if curr.next.data == curr.data :
+        if curr.next.data == curr.data:
             curr.next = curr.next.next
+            
         else:
             curr = curr.next
-        
+            
     return head
