@@ -8,28 +8,25 @@ class Node:
 
 class Solution:
     def isPalindrome(self, head):
-        # code here
-        if not head or not head.next :
+        f = s = head
+        if not head or not head.next:
             return True
-        slow = fast = head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-        
-        curr = slow
+        while f.next and f.next.next:
+            s=s.next
+            f = f.next.next
+            
         prev = None
-        while curr:
-            nn = curr.next
-            curr.next = prev
-            prev = curr
-            curr = nn
-        
-        fv = head
-        sv = prev
-        
-        while sv:
-            if fv.data != sv.data:
+        while s:
+            nn =s.next
+            s.next = prev
+            prev = s
+            s = nn
+        curr = head   
+        while prev and curr:
+            if prev.data != curr.data:
                 return False
-            fv,sv = fv.next,sv.next
+            prev = prev.next
+            curr = curr.next 
+                
         return True
-        
+            
