@@ -11,8 +11,10 @@ class Solution:
         curr = head
         prev = None
         while curr:
-            nextn = curr.next
+            nn = curr.next
             curr.next = prev
             prev = curr
-            curr = nextn
+            curr = nn
+            
+            
         return prev
