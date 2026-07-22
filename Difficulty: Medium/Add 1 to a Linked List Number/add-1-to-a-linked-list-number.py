@@ -4,35 +4,34 @@ class Node:
         self.data = data
         self.next = None
 '''
-
 class Solution:
-    def addOne(self, head):
+    def addOne(self,head):
+        # code here
+        h1 = self.rev(head)
+        rh=h1
+        carry = 1
+        while h1:
+            t = h1.data+carry
+            carry = t // 10
+            h1.data = t % 10
+            if not h1.next and carry > 0:
+                h1.next = Node(carry)
+                carry = 0
+                
+            h1 = h1.next
+            
+        return self.rev(rh)
         
-        arr = []
-        curr = head
-        while curr:
-            arr.append(curr.data)
-            curr = curr.next
-            
+    def rev(self,l1):
         
-        arr = arr[::-1]
-        na = []
-        cr = 1
-        for i in range(len(arr)):
-            s = arr[i] + cr      
-            cr = s // 10       
-            s = s % 10         
-            na.append(s)
+        prev = None
+        while l1:
+            nn = l1.next
+            l1.next = prev
+            prev = l1
+            l1 = nn
             
-        if cr > 0:
-            na.append(cr)
-            
-        na = na[::-1]
+        return prev
         
-        dummy = Node(0)
-        dum = dummy
-        for val in na:
-            dum.next = Node(val)
-            dum = dum.next
-            
-        return dummy.next 
+        
+        
