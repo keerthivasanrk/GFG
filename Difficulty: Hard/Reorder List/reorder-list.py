@@ -6,34 +6,43 @@ class Node:
 """
 
 class Solution:
-    def reorderList(self, head):
-        # code here
-        f=s=head
-        while f and f.next:
-            s = s.next
-            f=f.next.next
-            
-        prev = None
-        curr = s.next
-        s.next = None
-        
+    def rev(self, curr):
+        prev  =None
         while curr:
-            nxt = curr.next
+            nn = curr.next
             curr.next = prev
             prev = curr
-            curr = nxt
+            curr = nn
             
-        f = head
-        s = prev
-        
-        while s:
-            t1 = f.next
-            t2 = s.next
-            f.next = s
-            s.next = t1
-            f = t1
-            s = t2
+        return prev
+    
+    
+    def reorderList(self, head):
+        # code here
+        f = s= head
+        while f.next and f.next.next:
+            s = s.next
+            f = f.next.next
             
-        return head
+        h2  = s.next
+        s.next = None
+        revs = self.rev(h2)
         
+        dum = Node(0)
+        d = dum
+        
+        while head and revs:
+            n1 = head.next
+            n2  = revs.next
+            d.next = head
+            d = d.next
+            d.next = revs
+            d = d.next
+            head = n1
+            revs = n2
+        
+        if head:
+            d.next = head
+            
+        return dum.next
             
